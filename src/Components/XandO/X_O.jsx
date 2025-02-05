@@ -4,14 +4,17 @@ import './X_O.css'
 import heart from '../Assets/heart.png'
 import broken_heart from '../Assets/brokenheart.png'
 
-let data =[" "," "," "," ", " "," "," ", " ", " "]
+// let data =[" "," "," "," ", " "," "," ", " ", " "]
  
 const X_O = () => {
   let[count, setCount]= useState(0);
   let[lock, setLock]=useState(false);
+  const [winner, setWinner] = useState(null);
+  const[showConfetti, setShowConfetti]=useState(false);
+  const [data, setData] = useState([" ", " ", " ", " ", " ", " ", " ", " ", " "]);
   let titleRef =useRef(null);
   let dareRef =useRef(null);
-  
+
    const toggle = (e,num)=>{
   if (lock) {
     return 0;
@@ -20,11 +23,13 @@ const X_O = () => {
    
     e.target.innerHTML = `<img src='${heart}'>`
       data[num]="x";
+      setData(data);
       setCount(++count);
   }
   else{
     e.target.innerHTML = `<img src='${broken_heart}'>`
     data[num]="o";
+    setData(data);
     setCount(++count);
   }
   checkwin();
@@ -95,10 +100,24 @@ else if (data[0] === data[4] && data[4] === data[8] && data[8] !== " ") {
 //Winning Dares
 const dares = [
   "You will have to kiss your partner 😘",
-  // "You have to cook dinner for your partner",
-  // "You have to give your partner a massage",
-  // "You have to take your partner out for a date",
-  // "You have to write a love letter to your partner"
+  "You have to cook dinner for your partner 🍲",
+  "You have to give your partner a massage 💆‍♂️",
+  "You have to take your partner out for a date 🌹",
+  "You have to write a love letter to your partner 💌",
+ "Sing a love song in front of your partner 🎤",
+ "Write a poem or love letter and read it aloud 📜",
+ "Plan a surprise getaway or weekend staycation 🏖️",
+  "Exchange silly love notes or drawings",
+  "post partner picture  on your social media",
+  "Use your non-dominant hand for an hour",
+  "Send a picture of your eyes to your crush",
+  "Paint your fingernails with a crayon",
+  "Block the fifth person in your DMs, no cheating by scrolling",
+  " Send a video of you singing a love song to your crush",
+  "Text the third person in your message history 'last night was great' with a heart emoji",
+  "Tell the your crush  something about you that you've never told them before",
+  "Show everyone your frequently used emoji list.",
+  "Dare 🤪 suprise!!,  your partner will ask you  any question"
 ];
 
 const getRandomDare = () => {
@@ -110,10 +129,22 @@ const getRandomDare = () => {
 
 const Ldares = [
   "You have to buy a gift for your partner",
-  // "You have to cook dinner for your partner",
-  // "You have to give your partner a massage",
-  // "You have to take your partner out for a date",
-  // "You have to write a love letter to your partner"
+ "Dare 🤪 suprise!!,  your partner will ask you  any question",
+"Give your partner your credit card for a day",
+"Call your first DM for no reason",
+"Let your partner choose your profile picture for the next day",
+"Play the last song you listened to. No lying!",
+"Tell the other players something they don't know about you",
+"Send a meme you've made",
+"Have you ever peed in a public pool? Tell the truth!",
+"Call your parents and talk about the weather in a british accent",
+"Lick someone's or your partner hand.",
+"Tell your partner , your most embarrassing story",
+"Describe the object closest to you until your partner guesses the object.",
+"Put on makeup if you don't wear makeup and it's available, take off all your makeup if you're wearing it",
+"Set your cell phone language to Spanish for the next 10 minutes"
+
+
 ];
 
 const getRandomDarel = () => {
@@ -125,25 +156,38 @@ const Won = (winner)  => {
   setLock(true);
   const oneDare = getRandomDare();
   const TwoDare = getRandomDarel();
+  setShowConfetti(true);
 
   if(winner ==="x"){
     titleRef.current.innerHTML=`Heart <img src=${heart}> is the winner`;
-    dareRef.current.innerHTML = ` Ou it your lucky day ${oneDare}`;
+    dareRef.current.innerHTML = `${oneDare}`;
   }else{
     titleRef.current.innerHTML=`Heart break!<img src=${broken_heart}>  is the winner`;
     dareRef.current.innerHTML = `Ou damand for heart break it high ${TwoDare}`;
-}
+};
+
+ // Hide confetti after 5 seconds
+ setTimeout(() => {
+  setShowConfetti(false);
+}, 7000);
+
 }
 const reset = () => {
   setLock(false);
-  let data =[" "," "," "," ", " "," "," ", " ", " "];
-  titleRef.current.innerHTML="X and O love gaming <span>React</span>";
+    setWinner(null);
+    setShowConfetti(false);
+    setCount(0);
+    setData([" ", " ", " ", " ", " ", " ", " ", " ", " "]);
+    titleRef.current.innerHTML = "X and O love gaming <span>React</span>";
+    dareRef.current.innerHTML = "Happy valentine let make this game fun... make sure you play with your partner or your crush😏.";
+    const boxes = document.querySelectorAll('.boxes');
+    boxes.forEach(box => box.innerHTML = "");
 }
   return (
     <div className='container'>
-       {winner && <Confetti />}
+     {showConfetti && <Confetti />}
       <h1 className="title" ref={titleRef}>X and O love gaming <span>React</span></h1>
-      <p ref={dareRef}>Happy valentine let make this game fun... make sure you play with your partner or your crush😏</p>
+      <p ref={dareRef}>Happy valentine let make this game fun... make sure you play with your partner or your crush😏, loser get Dare</p>
       <div className="board">
       <div className="row1">
         <div className="boxes" onClick={(e)=>{toggle(e,0)}}></div>
@@ -162,7 +206,7 @@ const reset = () => {
         <div className="boxes" onClick={(e)=>{toggle(e,8)}} ></div>
       </div>
       </div>
-      <button className="reset" onClick={()=>{reset()}}>Restart</button>
+      <button className="reset" onClick={reset}>Restart</button>
     </div>
   )
 }
