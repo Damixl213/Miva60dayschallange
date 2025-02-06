@@ -108,7 +108,7 @@ const dares = [
  "Write a poem or love letter and read it aloud 📜",
  "Plan a surprise getaway or weekend staycation 🏖️",
   "Exchange silly love notes or drawings",
-  "post partner picture  on your social media",
+  "Post you partner picture  on your social media",
   "Use your non-dominant hand for an hour",
   "Send a picture of your eyes to your crush",
   "Paint your fingernails with a crayon",
@@ -163,7 +163,7 @@ const Won = (winner)  => {
     dareRef.current.innerHTML = `${oneDare}`;
   }else{
     titleRef.current.innerHTML=`Heart break!<img src=${broken_heart}>  is the winner`;
-    dareRef.current.innerHTML = `Ou damand for heart break it high ${TwoDare}`;
+    dareRef.current.innerHTML = `${TwoDare}`;
 };
 
  // Hide confetti after 5 seconds
