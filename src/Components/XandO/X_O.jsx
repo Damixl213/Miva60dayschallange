@@ -93,6 +93,11 @@ else if (data[0] === data[4] && data[4] === data[8] && data[8] !== " ") {
 } else if (data[2] === data[4] && data[4] === data[6] && data[6] !== " ") {
   Won(data[6]);
 }
+// Check for draw
+if (data.every(cell => cell !== " ")) {
+  Won(null);
+}
+
 }
 
 
@@ -129,7 +134,7 @@ const getRandomDare = () => {
 
 const Ldares = [
   "You have to buy a gift for your partner",
- "Dare 🤪 suprise!!,  your partner will ask you  any question",
+ "Dare 🤪 suprise!!,  your partner will ask you  any question oor gives you a Dare ",
 "Give your partner your credit card for a day",
 "Call your first DM for no reason",
 "Let your partner choose your profile picture for the next day",
@@ -138,7 +143,7 @@ const Ldares = [
 "Send a meme you've made",
 "Have you ever peed in a public pool? Tell the truth!",
 "Call your parents and talk about the weather in a british accent",
-"Lick someone's or your partner hand.",
+"Lick someone's hand.",
 "Tell your partner , your most embarrassing story",
 "Describe the object closest to you until your partner guesses the object.",
 "Put on makeup if you don't wear makeup and it's available, take off all your makeup if you're wearing it",
@@ -159,12 +164,20 @@ const Won = (winner)  => {
   setShowConfetti(true);
 
   if(winner ==="x"){
-    titleRef.current.innerHTML=`Heart <img src=${heart}> is the winner`;
+    setShowConfetti(true);
+    titleRef.current.innerHTML=`<img src=${heart}> is the winner`;
     dareRef.current.innerHTML = `${oneDare}`;
-  }else{
-    titleRef.current.innerHTML=`Heart break!<img src=${broken_heart}>  is the winner`;
+  }else if(winner ==="o"){
+    setShowConfetti(true);
+    titleRef.current.innerHTML=`<img src=${broken_heart}>  is the winner`;
     dareRef.current.innerHTML = `${TwoDare}`;
+}else{ 
+  setShowConfetti(false);
+  titleRef.current.innerHTML = "It's a draw";
+  dareRef.current.innerHTML = "You both are winners, play again to find the ultimate winner";
+
 };
+  
 
  // Hide confetti after 5 seconds
  setTimeout(() => {
@@ -179,7 +192,7 @@ const reset = () => {
     setCount(0);
     setData([" ", " ", " ", " ", " ", " ", " ", " ", " "]);
     titleRef.current.innerHTML = "X and O love gaming <span>React</span>";
-    dareRef.current.innerHTML = "Happy valentine let make this game fun... make sure you play with your partner or your crush😏.";
+    dareRef.current.innerHTML = "Happy valentine, lets make this game fun... make sure you play with your partner or your crush that is near you 😏.";
     const boxes = document.querySelectorAll('.boxes');
     boxes.forEach(box => box.innerHTML = "");
 }
@@ -187,7 +200,7 @@ const reset = () => {
     <div className='container'>
      {showConfetti && <Confetti />}
       <h1 className="title" ref={titleRef}>X and O love gaming <span>React</span></h1>
-      <p ref={dareRef}>Happy valentine let make this game fun... make sure you play with your partner or your crush😏, loser get Dare</p>
+      <p ref={dareRef}>Happy valentine, lets make this game fun... make sure you play with your partner or your crush that is near you 😏, Watch out  loser get Dared</p>
       <div className="board">
       <div className="row1">
         <div className="boxes" onClick={(e)=>{toggle(e,0)}}></div>
