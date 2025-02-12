@@ -5,14 +5,27 @@
   "dependencies": {
     "cra-template": "1.2.0",
     "react": "^19.0.0",
+<<<<<<< HEAD
     "react-dom": "^19.0.0",
     "react-scripts": "5.0.1"
+=======
+    "react-confetti": "^6.2.2",
+    "react-dom": "^19.0.0",
+    "react-scripts": "^5.0.1",
+    "web-vitals": "^4.2.4"
+>>>>>>> Tictactoe
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+<<<<<<< HEAD
     "eject": "react-scripts eject"
+=======
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+>>>>>>> Tictactoe
   },
   "eslintConfig": {
     "extends": [
@@ -26,10 +39,20 @@
       "not dead",
       "not op_mini all"
     ],
+<<<<<<< HEAD
+=======
+    "homepage": "https://Damixl213.github.io/Miva60dayschallange.git",
+>>>>>>> Tictactoe
     "development": [
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
     ]
+<<<<<<< HEAD
+=======
+  },
+  "devDependencies": {
+    "gh-pages": "^6.3.0"
+>>>>>>> Tictactoe
   }
 }

@@ -1,5 +1,12 @@
 .container{
+<<<<<<< HEAD
   text-align: center ;
+=======
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+>>>>>>> Tictactoe
 }
 .title{
   margin-top: 50px;
@@ -11,7 +18,11 @@
 }
 .title span{
   color:#26ffcb ;
+<<<<<<< HEAD
   padding-left:15px ;
+=======
+  padding-left:4px ;
+>>>>>>> Tictactoe
   transition: all ease 1.4s;
   cursor: pointer;
 }
@@ -20,15 +31,173 @@
 }
 
 .reset{
+<<<<<<< HEAD
   width: 250px;
   height: 100px;
+=======
+  width: 180px;
+  
+>>>>>>> Tictactoe
   border: none;
   outline: none;
   cursor: pointer;
   border-radius: 50px;
   background: #1f3540;
+<<<<<<< HEAD
   font-size: 26px;
   color: #26ffcb;
   margin-top: 25px;
   margin-bottom:50px ;
 }
+=======
+  font-size: 20px;
+  color: #26ffcb;
+  margin-top: 25px;
+  margin-bottom:50px ;
+  padding: 20px 20px;
+  transition: all ease 0.4s;
+}
+.reset:hover{
+  background: #26ffcb;
+  color: #1f3540;
+}
+.boxes{
+  display: flex;
+  height: 180px;
+  width: 180px;
+  background-color: #1f3540;
+  border: 4px solid #0f1b21 ;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all ease 0.4s;
+}
+.boxes:hover{
+  background-color: #0f1b21;
+}
+.board{
+  height: 600px;
+  width: 564px;
+  display: flex;
+  margin: auto;
+  
+}
+.boxes img{
+ width: 140px;
+ height: 80px;
+ position: relative;
+ left: 30px;
+ top: 50PX;
+ right: 70PX;
+ justify-content: center;
+}
+p{
+  color: white;
+  font-size: 20px;
+  margin-top: 20px;
+  font-weight: bold;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-align: justify;
+  width: 500px;
+}
+
+.title img{
+  padding: 10px 10px;
+  margin-top: 20px;
+  height: 60px;
+  
+}
+
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 1.75rem;
+  }
+
+  .board {
+    max-width: 350px;
+  }
+p{
+  color: #1f3540;
+  width: 490px;
+}
+  .boxes {
+    background-color: #363949;
+    position: relative;
+    right: 60px;
+    width: 153px; 
+    box-shadow:hsl(213, 15%, 49%) 0px 0px 8px;
+    border: none;
+    margin: 2px;
+  }
+  .boxes:hover{
+    background-color:#181a1e;
+    box-shadow:#202528 80px 90px 10px;
+  }
+
+ .boxes img{
+  position: relative;
+  width: 500px;
+  height: 100px;
+  left:0px;
+  top:50px ;
+  margin-right: 190px;
+  justify-content: center;
+ }
+  button {
+    font-size: 0.875rem;
+    padding: 8px 16px;
+  }
+}
+
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 20px;
+  }
+  
+  .board {
+    max-width: 300px;
+  }
+  p{
+    margin-left:140px ;
+    margin-right: 10px;
+    width: 300px;
+    margin-bottom: 12px;
+  }
+
+
+  .boxes {
+    background-color: #d0d0d0;
+    width: 120px;
+    height: 150px;
+    position: relative;
+    right: 150px;
+    top: 100px;
+    margin: 5px;
+    box-shadow: none
+    
+  }
+  .boxes:hover{
+    background-color:#181a1e;
+    box-shadow:none;}
+ .boxes img{
+  width: 100px;
+  height: 50px;
+  position: relative;
+  left: 0px;
+  top:30px ;
+  
+ }
+ .title img{
+  padding:0px;
+  margin-top: 1px;
+  height: 25px;
+  max-width: 50px;
+}
+  button {
+    font-size: 0.75rem;
+    padding: 6px 12px;
+    margin-bottom:120px;
+  }
+}
+>>>>>>> Tictactoe
